@@ -1,0 +1,1014 @@
+
+(object Petal
+    version    	50
+    _written   	"Rose 8.3.0407.2800"
+    charSet    	0)
+
+(object Design "Logical View"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"5996C1270386"
+    enforceClosureAutoLoad 	FALSE
+    defaults   	(object defaults
+	rightMargin 	0.250000
+	leftMargin 	0.250000
+	topMargin  	0.250000
+	bottomMargin 	0.500000
+	pageOverlap 	0.250000
+	clipIconLabels 	TRUE
+	autoResize 	TRUE
+	snapToGrid 	TRUE
+	gridX      	0
+	gridY      	0
+	defaultFont 	(object Font
+	    size       	10
+	    face       	"Arial"
+	    bold       	FALSE
+	    italics    	FALSE
+	    underline  	FALSE
+	    strike     	FALSE
+	    color      	0
+	    default_color 	TRUE)
+	showMessageNum 	3
+	showClassOfObject 	TRUE
+	notation   	"Unified")
+    root_usecase_package 	(object Class_Category "Use Case View"
+	quid       	"5996C1270388"
+	exportControl 	"Public"
+	global     	TRUE
+	logical_models 	(list unit_reference_list)
+	logical_presentations 	(list unit_reference_list
+	    (object UseCaseDiagram "Main"
+		quid       	"5996C127038F"
+		title      	"Main"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    root_category 	(object Class_Category "Logical View"
+	quid       	"5996C1270387"
+	exportControl 	"Public"
+	global     	TRUE
+	subsystem  	"Component View"
+	quidu      	"5996C1270389"
+	logical_models 	(list unit_reference_list
+	    (object Class "BANK"
+		quid       	"5996C1DB01C8"
+		operations 	(list Operations
+		    (object Operation "manages"
+			quid       	"5996C2B70083"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "maintains"
+			quid       	"5996C2F5017D"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "create_account"
+			quid       	"5996C5BF03C9"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "generate_pin"
+			quid       	"5996C6910252"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "block_account"
+			quid       	"5996C6FA03D8"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "code"
+			quid       	"5996C2D80088")
+		    (object ClassAttribute "address"
+			quid       	"5996C2E0024B")))
+	    (object Class "ACCOUNT"
+		quid       	"5996C25A0296"
+		used_nodes 	(list uses_relationship_list
+		    (object Uses_Relationship
+			quid       	"5996CC200302"
+			supplier   	"Logical View::ATM TRANSACTIONS"
+			quidu      	"5996C26B033C"))
+		operations 	(list Operations
+		    (object Operation "create_transaction"
+			quid       	"5996C43D028D"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "number"
+			quid       	"5996C3F802D5")
+		    (object ClassAttribute "balance"
+			quid       	"5996C3FF0360")
+		    (object ClassAttribute "account_status"
+			quid       	"5996C6E5011A")))
+	    (object Class "CURRENT ACCOUNT"
+		quid       	"5996C25A03DE"
+		superclasses 	(list inheritance_relationship_list
+		    (object Inheritance_Relationship
+			quid       	"5996C94E0096"
+			supplier   	"Logical View::ACCOUNT"
+			quidu      	"5996C25A0296"))
+		operations 	(list Operations
+		    (object Operation "withdraw"
+			quid       	"5996C96C03B0"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "account_num"
+			quid       	"5996C4860236")
+		    (object ClassAttribute "balance"
+			quid       	"5996C48C03BC")))
+	    (object Class "ATM"
+		quid       	"5996C25B0219"
+		operations 	(list Operations
+		    (object Operation "identifies"
+			quid       	"5996C34701AC"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "transactions"
+			quid       	"5996C34D0332"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "location"
+			quid       	"5996C3370113")
+		    (object ClassAttribute "managedby"
+			quid       	"5996C33E0373")))
+	    (object Class "SAVINGS ACCOUNT"
+		quid       	"5996C26A036C"
+		superclasses 	(list inheritance_relationship_list
+		    (object Inheritance_Relationship
+			quid       	"5996C9510345"
+			supplier   	"Logical View::ACCOUNT"
+			quidu      	"5996C25A0296"))
+		operations 	(list Operations
+		    (object Operation "deposit"
+			quid       	"5996C9850218"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "account_num"
+			quid       	"5996C623031E")
+		    (object ClassAttribute "balance"
+			quid       	"5996C62C0291")))
+	    (object Class "CUSTOMER"
+		quid       	"5996C26B011A"
+		superclasses 	(list inheritance_relationship_list
+		    (object Inheritance_Relationship
+			quid       	"5996C7CD0321"
+			supplier   	"Logical View::ATM"
+			quidu      	"5996C25B0219"))
+		operations 	(list Operations
+		    (object Operation "verifypassword"
+			quid       	"5996C37C00F7"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "withdraw"
+			quid       	"5996C385004A"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "deposit"
+			quid       	"5996C39E03B0"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "balanceinfo"
+			quid       	"5996C3A50054"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "transfer"
+			quid       	"5996C3B201F7"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "request_generate_pin"
+			quid       	"5996C51E0282"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "name"
+			quid       	"5996C360011B")
+		    (object ClassAttribute "address"
+			quid       	"5996C364006F")
+		    (object ClassAttribute "DateofBirth"
+			quid       	"5996C3660262")
+		    (object ClassAttribute "CardNumber"
+			quid       	"5996C36C00EA")
+		    (object ClassAttribute "PIN"
+			quid       	"5996C3760250")))
+	    (object Class "ATM TRANSACTIONS"
+		quid       	"5996C26B033C"
+		used_nodes 	(list uses_relationship_list
+		    (object Uses_Relationship
+			quid       	"5996CC1D014D"
+			supplier   	"Logical View::ACCOUNT"
+			quidu      	"5996C25A0296"))
+		operations 	(list Operations
+		    (object Operation "modifies"
+			quid       	"5996C60C0262"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "trainsaction_id"
+			quid       	"5996C5F103D9")
+		    (object ClassAttribute "date"
+			quid       	"5996C5FB0272")
+		    (object ClassAttribute "type"
+			quid       	"5996C5FE0158")
+		    (object ClassAttribute "amount"
+			quid       	"5996C601007E")
+		    (object ClassAttribute "post_balance"
+			quid       	"5996C6030158")))
+	    (object Class "NewInterface"
+		quid       	"5996C724007A"
+		stereotype 	"Interface")
+	    (object Association "$UNNAMED$0"
+		quid       	"5996C76701BF"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$1"
+			quid       	"5996C76B00E4"
+			supplier   	"Logical View::BANK"
+			quidu      	"5996C1DB01C8"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$2"
+			quid       	"5996C76B00E6"
+			supplier   	"Logical View::ATM"
+			quidu      	"5996C25B0219"
+			is_navigable 	TRUE
+			is_aggregate 	TRUE)))
+	    (object Association "$UNNAMED$3"
+		quid       	"5996C77203E1"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$4"
+			quid       	"5996C7730384"
+			supplier   	"Logical View::ATM"
+			quidu      	"5996C25B0219"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$5"
+			quid       	"5996C7730386"
+			supplier   	"Logical View::BANK"
+			quidu      	"5996C1DB01C8"
+			is_navigable 	TRUE
+			is_aggregate 	TRUE)))
+	    (object Association "$UNNAMED$6"
+		quid       	"5996C7A903CF"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$7"
+			quid       	"5996C7AA02E5"
+			supplier   	"Logical View::ACCOUNT"
+			quidu      	"5996C25A0296"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$8"
+			quid       	"5996C7AA02E7"
+			supplier   	"Logical View::CUSTOMER"
+			quidu      	"5996C26B011A"
+			is_navigable 	TRUE)))
+	    (object Association "$UNNAMED$9"
+		quid       	"5996C81600AC"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$10"
+			quid       	"5996C81700AC"
+			supplier   	"Logical View::CUSTOMER"
+			quidu      	"5996C26B011A"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$11"
+			quid       	"5996C81700AE"
+			supplier   	"Logical View::BANK"
+			quidu      	"5996C1DB01C8"
+			is_navigable 	TRUE
+			is_aggregate 	TRUE)))
+	    (object Association "$UNNAMED$12"
+		quid       	"5996C8360211"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$13"
+			quid       	"5996C83703A8"
+			supplier   	"Logical View::BANK"
+			quidu      	"5996C1DB01C8"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$14"
+			quid       	"5996C83703AA"
+			supplier   	"Logical View::CUSTOMER"
+			quidu      	"5996C26B011A"
+			is_navigable 	TRUE
+			is_aggregate 	TRUE)))
+	    (object Association "$UNNAMED$15"
+		quid       	"5996C8420240"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$16"
+			quid       	"5996C843031A"
+			supplier   	"Logical View::BANK"
+			quidu      	"5996C1DB01C8"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$17"
+			quid       	"5996C843031C"
+			supplier   	"Logical View::CUSTOMER"
+			quidu      	"5996C26B011A"
+			is_navigable 	TRUE
+			is_aggregate 	TRUE)))
+	    (object Association "$UNNAMED$18"
+		quid       	"5996C90D0231"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$19"
+			quid       	"5996C90E0108"
+			supplier   	"Logical View::BANK"
+			quidu      	"5996C1DB01C8"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$20"
+			quid       	"5996C90E010A"
+			supplier   	"Logical View::CUSTOMER"
+			quidu      	"5996C26B011A"
+			is_navigable 	TRUE
+			is_aggregate 	TRUE)))
+	    (object Association "$UNNAMED$21"
+		quid       	"5996C9120212"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$22"
+			quid       	"5996C913009B"
+			supplier   	"Logical View::CUSTOMER"
+			quidu      	"5996C26B011A"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$23"
+			quid       	"5996C91300AA"
+			supplier   	"Logical View::BANK"
+			quidu      	"5996C1DB01C8"
+			is_navigable 	TRUE
+			is_aggregate 	TRUE)))
+	    (object Association "$UNNAMED$24"
+		quid       	"5996C92001E2"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$25"
+			quid       	"5996C9210117"
+			supplier   	"Logical View::CUSTOMER"
+			quidu      	"5996C26B011A"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$26"
+			quid       	"5996C9210119"
+			supplier   	"Logical View::ATM"
+			quidu      	"5996C25B0219"
+			is_navigable 	TRUE
+			is_aggregate 	TRUE)))
+	    (object Association "$UNNAMED$27"
+		quid       	"5996C993038E"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$28"
+			quid       	"5996C99601C9"
+			supplier   	"Logical View::SAVINGS ACCOUNT"
+			quidu      	"5996C26A036C"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$29"
+			quid       	"5996C99601CB"
+			supplier   	"Logical View::CURRENT ACCOUNT"
+			quidu      	"5996C25A03DE"
+			is_navigable 	TRUE)))
+	    (object Association "$UNNAMED$30"
+		quid       	"5996C9F5025E"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$31"
+			quid       	"5996C9F6022E"
+			supplier   	"Logical View::ATM TRANSACTIONS"
+			quidu      	"5996C26B033C"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$32"
+			quid       	"5996C9F60230"
+			supplier   	"Logical View::ACCOUNT"
+			quidu      	"5996C25A0296"
+			is_navigable 	TRUE))))
+	logical_presentations 	(list unit_reference_list
+	    (object ClassDiagram "Main"
+		quid       	"5996C127038D"
+		title      	"Main"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	294
+		origin_y   	156
+		items      	(list diagram_item_list
+		    (object ClassView "Class" "Logical View::BANK" @1
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			ShowOperationSignature 	TRUE
+			location   	(1738, 1236)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@1
+			    location   	(1454, 961)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	569
+			    justify    	0
+			    label      	"BANK")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	12632256
+			quidu      	"5996C1DB01C8"
+			compartment 	(object Compartment
+			    Parent_View 	@1
+			    location   	(1454, 1022)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	8
+			    max_width  	362)
+			width      	587
+			height     	575
+			annotation 	8)
+		    (object ClassView "Class" "Logical View::ATM" @2
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			ShowOperationSignature 	TRUE
+			location   	(1752, 463)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@2
+			    location   	(1468, 188)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	569
+			    justify    	0
+			    label      	"ATM")
+			icon_style 	"Icon"
+			line_color 	16512
+			fill_color 	12632256
+			quidu      	"5996C25B0219"
+			compartment 	(object Compartment
+			    Parent_View 	@2
+			    location   	(1468, 249)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	5
+			    max_width  	306)
+			width      	587
+			height     	575
+			annotation 	8)
+		    (object AssociationViewNew "$UNNAMED$3" @3
+			location   	(1744, 849)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5996C77203E1"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$4" @4
+				Parent_View 	@3
+				location   	(-1381, -578)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C7730384"
+				client     	@3
+				supplier   	@2
+				vertices   	(list Points
+				    (1744, 849)
+				    (1746, 750))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$5" @5
+				Parent_View 	@3
+				location   	(-1381, -578)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C7730386"
+				client     	@3
+				supplier   	@1
+				vertices   	(list Points
+				    (1744, 849)
+				    (1742, 948))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::CUSTOMER" @6
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			ShowOperationSignature 	TRUE
+			location   	(534, 1247)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@6
+			    location   	(237, 853)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	594
+			    justify    	0
+			    label      	"CUSTOMER")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	12632256
+			quidu      	"5996C26B011A"
+			compartment 	(object Compartment
+			    Parent_View 	@6
+			    location   	(237, 914)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	12
+			    max_width  	471)
+			width      	612
+			height     	812
+			annotation 	8)
+		    (object AssociationViewNew "$UNNAMED$21" @7
+			location   	(1142, 1240)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5996C9120212"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$22" @8
+				Parent_View 	@7
+				location   	(-596, 4)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C913009B"
+				client     	@7
+				supplier   	@6
+				vertices   	(list Points
+				    (1142, 1240)
+				    (840, 1243))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$23" @9
+				Parent_View 	@7
+				location   	(-596, 4)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C91300AA"
+				client     	@7
+				supplier   	@1
+				vertices   	(list Points
+				    (1142, 1240)
+				    (1444, 1237))
+				line_style 	0)))
+		    (object AssociationViewNew "$UNNAMED$24" @10
+			location   	(801, 465)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5996C92001E2"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$25" @11
+				Parent_View 	@10
+				location   	(-951, 2)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C9210117"
+				client     	@10
+				supplier   	@6
+				vertices   	(list Points
+				    (801, 465)
+				    (519, 466)
+				    (525, 840))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$26" @12
+				Parent_View 	@10
+				location   	(-951, 2)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C9210119"
+				client     	@10
+				supplier   	@2
+				vertices   	(list Points
+				    (801, 465)
+				    (1458, 463))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::CURRENT ACCOUNT" @13
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			ShowOperationSignature 	TRUE
+			location   	(811, 2931)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@13
+			    location   	(527, 2656)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	569
+			    justify    	0
+			    label      	"CURRENT ACCOUNT")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	12632256
+			quidu      	"5996C25A03DE"
+			compartment 	(object Compartment
+			    Parent_View 	@13
+			    location   	(527, 2717)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	4
+			    max_width  	303)
+			width      	587
+			height     	575
+			annotation 	8)
+		    (object ClassView "Class" "Logical View::SAVINGS ACCOUNT" @14
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			ShowOperationSignature 	TRUE
+			location   	(2013, 2927)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@14
+			    location   	(1769, 2664)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	488
+			    justify    	0
+			    label      	"SAVINGS ACCOUNT")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	12632256
+			quidu      	"5996C26A036C"
+			compartment 	(object Compartment
+			    Parent_View 	@14
+			    location   	(1769, 2725)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	4
+			    max_width  	303)
+			width      	506
+			height     	550
+			annotation 	8)
+		    (object AssociationViewNew "$UNNAMED$27" @15
+			location   	(1431, 2928)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5996C993038E"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$28" @16
+				Parent_View 	@15
+				location   	(617, 29)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C99601C9"
+				client     	@15
+				supplier   	@14
+				vertices   	(list Points
+				    (1431, 2928)
+				    (1759, 2927))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$29" @17
+				Parent_View 	@15
+				location   	(617, 29)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C99601CB"
+				client     	@15
+				supplier   	@13
+				vertices   	(list Points
+				    (1431, 2928)
+				    (1104, 2930))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::ACCOUNT" @18
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			ShowOperationSignature 	TRUE
+			location   	(1499, 2162)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@18
+			    location   	(1293, 2006)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	412
+			    justify    	0
+			    label      	"ACCOUNT")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	12632256
+			quidu      	"5996C25A0296"
+			compartment 	(object Compartment
+			    Parent_View 	@18
+			    location   	(1293, 2067)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	5
+			    max_width  	418)
+			width      	430
+			height     	336
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$6" @19
+			location   	(652, 2165)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5996C7A903CF"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$7" @20
+				Parent_View 	@19
+				location   	(112, 931)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C7AA02E5"
+				client     	@19
+				supplier   	@18
+				vertices   	(list Points
+				    (652, 2165)
+				    (1283, 2162))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$8" @21
+				Parent_View 	@19
+				location   	(112, 931)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C7AA02E7"
+				client     	@19
+				supplier   	@6
+				vertices   	(list Points
+				    (652, 2165)
+				    (535, 2166)
+				    (534, 1653))
+				line_style 	0)))
+		    (object InheritTreeView "" @22
+			location   	(1532, 2426)
+			line_color 	3342489
+			fill_color 	13434879
+			supplier   	@18
+			vertices   	(list Points
+			    (1532, 2426)
+			    (1532, 2330)))
+		    (object InheritView "" @23
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5996C94E0096"
+			client     	@13
+			supplier   	@18
+			vertices   	(list Points
+			    (1075, 2644)
+			    (1075, 2426))
+			line_style 	3
+			origin_attachment 	(1075, 2644)
+			terminal_attachment 	(1075, 2426)
+			drawSupplier 	@22)
+		    (object InheritView "" @24
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5996C9510345"
+			client     	@14
+			supplier   	@18
+			vertices   	(list Points
+			    (2022, 2651)
+			    (2022, 2426))
+			line_style 	3
+			origin_attachment 	(2022, 2651)
+			terminal_attachment 	(2022, 2426)
+			drawSupplier 	@22)
+		    (object ClassView "Class" "Logical View::ATM TRANSACTIONS" @25
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			ShowOperationSignature 	TRUE
+			location   	(3046, 1281)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@25
+			    location   	(2762, 1006)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	569
+			    justify    	0
+			    label      	"ATM TRANSACTIONS")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	12632256
+			quidu      	"5996C26B033C"
+			compartment 	(object Compartment
+			    Parent_View 	@25
+			    location   	(2762, 1067)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	7
+			    max_width  	321)
+			width      	587
+			height     	575
+			annotation 	8)
+		    (object UsesView "" @26
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5996CC200302"
+			client     	@18
+			supplier   	@25
+			vertices   	(list Points
+			    (1714, 2157)
+			    (3060, 2137)
+			    (3050, 1568))
+			line_style 	0)
+		    (object AssociationViewNew "$UNNAMED$30" @27
+			location   	(2669, 2145)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5996C9F5025E"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$31" @28
+				Parent_View 	@27
+				location   	(1170, -17)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C9F6022E"
+				client     	@27
+				supplier   	@25
+				vertices   	(list Points
+				    (2669, 2145)
+				    (3053, 2140)
+				    (3047, 1568))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$32" @29
+				Parent_View 	@27
+				location   	(1170, -17)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5996C9F60230"
+				client     	@27
+				supplier   	@18
+				vertices   	(list Points
+				    (2669, 2145)
+				    (1714, 2158))
+				line_style 	0)))))))
+    root_subsystem 	(object SubSystem "Component View"
+	quid       	"5996C1270389"
+	physical_models 	(list unit_reference_list)
+	physical_presentations 	(list unit_reference_list
+	    (object Module_Diagram "Main"
+		quid       	"5996C127038E"
+		title      	"Main"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list)))
+	category   	"Logical View"
+	quidu      	"5996C1270387")
+    process_structure 	(object Processes
+	quid       	"5996C127038A"
+	ProcsNDevs 	(list
+	    (object Process_Diagram "Deployment View"
+		quid       	"5996C127038C"
+		title      	"Deployment View"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    properties 	(object Properties
+	quid       	"5996C127038B"))
